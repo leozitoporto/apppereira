@@ -25,6 +25,7 @@ import Button from '../../components/Button';
 import {
   Container,
   Title,
+  ImageLogo,
   ForgotPassword,
   ForgotPasswordText,
   CreateAccountButton,
@@ -99,7 +100,7 @@ const SignIn: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logoImg} />
+            <ImageLogo source={logoImg} />
             <View>
               <Title>Faça seu logon</Title>
             </View>

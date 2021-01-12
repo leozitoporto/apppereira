@@ -13,7 +13,12 @@ export const Title = styled.Text`
   font-size: 24px;
   color: #f4ede8;
   font-family: 'RobotoSlab-Medium';
-  margin: 64px 0 24px;
+  margin: 34px 0 14px;
+`;
+
+export const ImageLogo = styled.Image`
+    width: 230PX;
+     height: 160px;
 `;
 
 export const ForgotPassword = styled.TouchableOpacity`
