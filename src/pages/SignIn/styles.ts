@@ -17,8 +17,8 @@ export const Title = styled.Text`
 `;
 
 export const ImageLogo = styled.Image`
-    width: 230PX;
-     height: 160px;
+     width: 170PX;
+     height: 115px;
 `;
 
 export const ForgotPassword = styled.TouchableOpacity`
