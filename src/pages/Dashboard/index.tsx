@@ -14,7 +14,7 @@ import {
   UserName,
   ProfileButton,
   UserAvatar,
-  ProvidersList,
+  SalesList,
   ProviderContainer,
   ProviderAvatar,
   ProviderInfo,
@@ -24,20 +24,23 @@ import {
   ProviderListTitle,
 } from './styles';
 
-export interface Provider {
+export interface Sale {
   id: string;
   name: string;
+  obs: string;
+  price: number;
+  weight: number;
   avatar_url: string;
 }
 
 const Dashboard: React.FC = () => {
-  const [providers, setProviders] = useState<Provider[]>([]);
+  const [sales, setSales] = useState<Sale[]>([]);
   const { signOut, user } = useAuth();
   const { navigate } = useNavigation();
 
   useEffect(() => {
-    api.get('providers').then((response) => {
-      setProviders(response.data);
+    api.get('sales').then((response) => {
+      setSales(response.data);
     });
   }, []);
 
@@ -66,28 +69,28 @@ const Dashboard: React.FC = () => {
         </ProfileButton> 
       </Header>
 
-      <ProvidersList
-        data={providers}
-        keyExtractor={(provider) => provider.id}
+      <SalesList
+        data={sales}
+        keyExtractor={(sale) => sale.id}
         ListHeaderComponent={
           <ProviderListTitle>Lista de Carnes</ProviderListTitle>
         }
-        renderItem={({ item: provider }) => (
+        renderItem={({ item: sale }) => (
           <ProviderContainer
-            onPress={() => navigateToCreateAppointment(provider.id)}
+            onPress={() => navigateToCreateAppointment(sale.id)}
           >
-            <ProviderAvatar source={{ uri: provider.avatar_url }} />
+            <ProviderAvatar source={{ uri: sale.avatar_url }} />
             <ProviderInfo>
-              <ProviderName>{provider.name}</ProviderName>
+              <ProviderName>{sale.name}</ProviderName>
 
               <ProviderMeta>
-                <Icon name="calendar" size={14} color="#ff9000" />
-                <ProviderMetaText>Segunda à sexta</ProviderMetaText>
+                <Icon name="edit" size={14} color="#ff9000" />
+                <ProviderMetaText>{sale.obs}</ProviderMetaText>
               </ProviderMeta>
 
               <ProviderMeta>
-                <Icon name="clock" size={14} color="#ff9000" />
-                <ProviderMetaText>8h às 18h</ProviderMetaText>
+                <Icon name="chevrons-right" size={14} color="#ff9000" />
+                <ProviderMetaText>R$ {sale.price} - Peso: {sale.weight}kg</ProviderMetaText>
               </ProviderMeta>
             </ProviderInfo>
           </ProviderContainer>

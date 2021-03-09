@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { Provider } from './index';
+import { Sale } from './index';
 
 export const Container = styled.View`
   flex: 1;
@@ -39,7 +39,7 @@ export const UserAvatar = styled.Image`
   border-radius: 28px;
 `;
 
-export const ProvidersList = styled(FlatList as new () => FlatList<Provider>)`
+export const SalesList = styled(FlatList as new () => FlatList<Sale>)`
   padding: 32px 24px 16px;
 `;
 
@@ -53,9 +53,9 @@ export const ProviderContainer = styled(RectButton)`
 `;
 
 export const ProviderAvatar = styled.Image`
-  width: 72px;
-  height: 72px;
-  border-radius: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
 `;
 
 export const ProviderInfo = styled.View`
